@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>이곳은 디너 파일 에서 작성된 타이틀 입니다.</title>
+{% endblock title %}
+
+{% block content %}
+<button class="btn btn-primary">파란색 버튼</button>
+<p>{{ pick }}은 {{ pick|length }} 글자 </p>
+<p>{{ foods|join:', ' }}</p>
+
+<ol>
+    {% for food in foods %}
+        <li>{{ food }}</li>
+    {% endfor %}
+</ol>
+{% endblock content %}
+

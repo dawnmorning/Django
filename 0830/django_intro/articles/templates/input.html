@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    <form action="/catch/" method="GET">
+        Name: <input type="text" name="n1">
+        <br>
+        age: <input type="text" name="a1">
+        {% comment %} <input type="submit" value="submit"> {% endcomment %}
+        <button>데이터전달</button>
+    </form>
+</div>
+{% endblock content %}
