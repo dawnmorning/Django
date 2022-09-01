@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> 글 작성 하기</h1>
+{% comment %} 이제 method는 POST를 사용하자 
+   => DB에 영향을 미치는 요청은 전부 POST요청으로 하기로 했기 때문
+   => 글 생성하는 것도 DB에 데이터를 추가하는 것이다.
+   => DB를 변경하는 것과 같음
+{% endcomment %}
+
+{% comment %} 
+   POST요청으로 변경할 때 바뀌는 부분
+   1. method
+   2. csrf_token
+   3. views.py 에 request.POST 로 변경
+ {% endcomment %}
+<form action="{% url 'articles:create' %}" method = "POST">  {% comment %} 목적지 작성 {% endcomment %}
+   {% comment %} csrf 탭 {% endcomment %}
+   {% csrf_token %}    
+   <label for="title">글 제목</label>
+    <input type="text" id = 'title' name = 'title'>
+    <br>
+    <label for="content">글 내용</label>
+    <textarea name="content" id="content" cols="30" rows="10"></textarea>
+    <br>
+   <button> 글 쓰기</button> 
+</form>
+{% endblock content %}

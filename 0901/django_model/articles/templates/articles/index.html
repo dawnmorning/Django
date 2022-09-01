@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>INDEX</h1>
+{% comment %} 1 번째 링크 작성 방법 : 온전히 모든 URL을 작성
+<a href="http://127.0.0.1:8000/articles/lotto/">Go to Lotto</a> {% endcomment %}
+
+{% comment %} 2 번째 링크 작성 방법: path만 작성 {% endcomment %}
+{% comment %} <a href="/articles/lotto/">Go to Lotto2</a> {% endcomment %}
+
+{% comment %} 3번째 링크 작성방법 : DTL url Tag 사용{% endcomment %}
+
+{% comment %} <a href="{% url 'articles:lotto' %}">Go to Lotto 3</a> {% comment %} name = lotto 를 찾아 감{% endcomment %}
+{% comment %} 글 작성을 위한 링크 추가 {% endcomment %}
+<a href="{% url 'articles:new' %}">글 쓰기</a>
+<hr>
+{% for post in posts %}
+<p>
+  {% comment %}
+  variabe routing으로 전달하는 값은 유일한 값이어야 함. 
+  => id값이 제격이다.
+  {% url 'app_name:path_name' 전달값 %}
+  path_name' 이후 한칸 띄워서 적는다.
+  {% endcomment %}
+  <a href="{% url 'articles:detail' post.pk %}"> {{ post.title }}</a>
+</p>
+{% endfor %}
+
+{% endblock content %}

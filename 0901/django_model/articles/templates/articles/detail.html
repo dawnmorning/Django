@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ post.id}}번 글</h1>
+<p> 제목 {{ post.title}}</p>
+<p> 내용 {{ post.content }} </p>
+<hr>
+{% comment %} pk == id {% endcomment %}
+<a href="{% url 'articles:edit' post.id %}">수정하기</a>
+<a href="{% url 'articles:index' %}">글 목록</a>
+<hr>
+<a href="{% url 'articles:delete' post.id %}">삭제</a>
+<form action="{% url 'articles:delete' post.id %}" method = "POST"></form>
+{% csrf_token %}
+<button>삭제</button>
+{% endblock content %}
